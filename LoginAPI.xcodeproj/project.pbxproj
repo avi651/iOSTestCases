@@ -16,6 +16,16 @@
 		B19DEB392A7405670033C50B /* LoginAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B19DEB382A7405670033C50B /* LoginAPITests.swift */; };
 		B19DEB432A7405670033C50B /* LoginAPIUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B19DEB422A7405670033C50B /* LoginAPIUITests.swift */; };
 		B19DEB452A7405670033C50B /* LoginAPIUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B19DEB442A7405670033C50B /* LoginAPIUITestsLaunchTests.swift */; };
+		B19DEB532A74062F0033C50B /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B19DEB522A74062F0033C50B /* StringExtensions.swift */; };
+		B19DEB582A74066C0033C50B /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B19DEB572A74066C0033C50B /* LoginRequest.swift */; };
+		B19DEB5A2A7406830033C50B /* LoginResponnse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B19DEB592A7406830033C50B /* LoginResponnse.swift */; };
+		B19DEB5C2A7406930033C50B /* LoginData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B19DEB5B2A7406930033C50B /* LoginData.swift */; };
+		B19DEB5F2A7406B20033C50B /* LoginHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B19DEB5E2A7406B20033C50B /* LoginHandler.swift */; };
+		B19DEB622A7406FA0033C50B /* LoginAPIResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B19DEB612A7406FA0033C50B /* LoginAPIResource.swift */; };
+		B19DEB662A74072C0033C50B /* ValidationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B19DEB652A74072C0033C50B /* ValidationResponse.swift */; };
+		B19DEB692A74074C0033C50B /* LoginValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B19DEB682A74074C0033C50B /* LoginValidation.swift */; };
+		B19DEB6B2A7407A90033C50B /* LoginpiResourceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B19DEB6A2A7407A90033C50B /* LoginpiResourceTest.swift */; };
+		B19DEB6D2A740D800033C50B /* LoginIntegrationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B19DEB6C2A740D800033C50B /* LoginIntegrationTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +58,16 @@
 		B19DEB3E2A7405670033C50B /* LoginAPIUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LoginAPIUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B19DEB422A7405670033C50B /* LoginAPIUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAPIUITests.swift; sourceTree = "<group>"; };
 		B19DEB442A7405670033C50B /* LoginAPIUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAPIUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		B19DEB522A74062F0033C50B /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		B19DEB572A74066C0033C50B /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
+		B19DEB592A7406830033C50B /* LoginResponnse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponnse.swift; sourceTree = "<group>"; };
+		B19DEB5B2A7406930033C50B /* LoginData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginData.swift; sourceTree = "<group>"; };
+		B19DEB5E2A7406B20033C50B /* LoginHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginHandler.swift; sourceTree = "<group>"; };
+		B19DEB612A7406FA0033C50B /* LoginAPIResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAPIResource.swift; sourceTree = "<group>"; };
+		B19DEB652A74072C0033C50B /* ValidationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationResponse.swift; sourceTree = "<group>"; };
+		B19DEB682A74074C0033C50B /* LoginValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginValidation.swift; sourceTree = "<group>"; };
+		B19DEB6A2A7407A90033C50B /* LoginpiResourceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginpiResourceTest.swift; sourceTree = "<group>"; };
+		B19DEB6C2A740D800033C50B /* LoginIntegrationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginIntegrationTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +118,11 @@
 		B19DEB212A7405610033C50B /* LoginAPI */ = {
 			isa = PBXGroup;
 			children = (
+				B19DEB632A7407140033C50B /* Validation */,
+				B19DEB602A7406EC0033C50B /* DataResource */,
+				B19DEB512A7406190033C50B /* Extensions */,
+				B19DEB542A74063A0033C50B /* Models */,
+				B19DEB5D2A7406A60033C50B /* Handlers */,
 				B19DEB222A7405610033C50B /* LoginAPIApp.swift */,
 				B19DEB242A7405610033C50B /* ContentView.swift */,
 				B19DEB262A7405670033C50B /* Assets.xcassets */,
@@ -120,6 +145,8 @@
 			isa = PBXGroup;
 			children = (
 				B19DEB382A7405670033C50B /* LoginAPITests.swift */,
+				B19DEB6A2A7407A90033C50B /* LoginpiResourceTest.swift */,
+				B19DEB6C2A740D800033C50B /* LoginIntegrationTest.swift */,
 			);
 			path = LoginAPITests;
 			sourceTree = "<group>";
@@ -131,6 +158,81 @@
 				B19DEB442A7405670033C50B /* LoginAPIUITestsLaunchTests.swift */,
 			);
 			path = LoginAPIUITests;
+			sourceTree = "<group>";
+		};
+		B19DEB512A7406190033C50B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B19DEB522A74062F0033C50B /* StringExtensions.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		B19DEB542A74063A0033C50B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B19DEB552A7406520033C50B /* APIModels */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B19DEB552A7406520033C50B /* APIModels */ = {
+			isa = PBXGroup;
+			children = (
+				B19DEB562A74065C0033C50B /* LoginApiModels */,
+				B19DEB5B2A7406930033C50B /* LoginData.swift */,
+			);
+			path = APIModels;
+			sourceTree = "<group>";
+		};
+		B19DEB562A74065C0033C50B /* LoginApiModels */ = {
+			isa = PBXGroup;
+			children = (
+				B19DEB572A74066C0033C50B /* LoginRequest.swift */,
+				B19DEB592A7406830033C50B /* LoginResponnse.swift */,
+			);
+			path = LoginApiModels;
+			sourceTree = "<group>";
+		};
+		B19DEB5D2A7406A60033C50B /* Handlers */ = {
+			isa = PBXGroup;
+			children = (
+				B19DEB5E2A7406B20033C50B /* LoginHandler.swift */,
+			);
+			path = Handlers;
+			sourceTree = "<group>";
+		};
+		B19DEB602A7406EC0033C50B /* DataResource */ = {
+			isa = PBXGroup;
+			children = (
+				B19DEB612A7406FA0033C50B /* LoginAPIResource.swift */,
+			);
+			path = DataResource;
+			sourceTree = "<group>";
+		};
+		B19DEB632A7407140033C50B /* Validation */ = {
+			isa = PBXGroup;
+			children = (
+				B19DEB672A7407340033C50B /* LoginValidation */,
+				B19DEB642A74071B0033C50B /* Response */,
+			);
+			path = Validation;
+			sourceTree = "<group>";
+		};
+		B19DEB642A74071B0033C50B /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				B19DEB652A74072C0033C50B /* ValidationResponse.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
+		B19DEB672A7407340033C50B /* LoginValidation */ = {
+			isa = PBXGroup;
+			children = (
+				B19DEB682A74074C0033C50B /* LoginValidation.swift */,
+			);
+			path = LoginValidation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,8 +365,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B19DEB5F2A7406B20033C50B /* LoginHandler.swift in Sources */,
 				B19DEB2F2A7405670033C50B /* LoginAPI.xcdatamodeld in Sources */,
 				B19DEB2C2A7405670033C50B /* Persistence.swift in Sources */,
+				B19DEB532A74062F0033C50B /* StringExtensions.swift in Sources */,
+				B19DEB692A74074C0033C50B /* LoginValidation.swift in Sources */,
+				B19DEB662A74072C0033C50B /* ValidationResponse.swift in Sources */,
+				B19DEB5A2A7406830033C50B /* LoginResponnse.swift in Sources */,
+				B19DEB582A74066C0033C50B /* LoginRequest.swift in Sources */,
+				B19DEB622A7406FA0033C50B /* LoginAPIResource.swift in Sources */,
+				B19DEB5C2A7406930033C50B /* LoginData.swift in Sources */,
 				B19DEB252A7405610033C50B /* ContentView.swift in Sources */,
 				B19DEB232A7405610033C50B /* LoginAPIApp.swift in Sources */,
 			);
@@ -274,6 +384,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B19DEB6B2A7407A90033C50B /* LoginpiResourceTest.swift in Sources */,
+				B19DEB6D2A740D800033C50B /* LoginIntegrationTest.swift in Sources */,
 				B19DEB392A7405670033C50B /* LoginAPITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+struct ValidationResponse {
+    let message: String?
+    let isValid: Bool
+}
+

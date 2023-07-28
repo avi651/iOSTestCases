@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+struct LoginData {
+    let errorMessage: String?
+    let response: LoginResponse?
+}
+

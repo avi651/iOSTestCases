@@ -6,30 +6,96 @@
 //
 
 import XCTest
+@testable import LoginAPI
 
 final class LoginpiResourceTest: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    func test_LoginApiResouce_with_validRequest_Returns_LoginResponse() {
+        let request = LoginRequest(userEmail: "codecat15@gmail.com", userPassword: "1234")
+        let resource = LoginApiResource()
+        
+        let exceptation = self.expectation(description: "validRequest_Returns_LoginResponse")
+        
+        resource.authenticateUser(request: request) { loginResponse in
+            //Assets
+            XCTAssertNotNil(loginResponse)
+            XCTAssertNil(loginResponse?.errorMessage)
+            XCTAssertEqual(request.userEmail, loginResponse?.data?.email)
+            XCTAssertEqual("codecat15", loginResponse?.data?.userName)
+            XCTAssertEqual(15, loginResponse?.data?.userID)
+            exceptation.fulfill()
         }
+        
+        waitForExpectations(timeout: 100)
+    }
+    
+    func test_LoginApiResource_With_InValidRequest_Returns_Error(){
+
+        // ARRANGE
+        let request = LoginRequest(userEmail: "Hello@world.com", userPassword: "1234")
+        let resource = LoginApiResource()
+        let expectation = self.expectation(description: "InValidRequest_Returns_Error")
+
+        // ACT
+        resource.authenticateUser(request: request) { (loginResponse) in
+
+            // ASSERT
+            XCTAssertNotNil(loginResponse)
+            XCTAssertNotNil(loginResponse?.errorMessage)
+            XCTAssertNil(loginResponse?.data)
+            XCTAssertEqual("Invalid userEmail and password, please try again", loginResponse?.errorMessage)
+
+            expectation.fulfill()
+        }
+
+        waitForExpectations(timeout: 5, handler: nil)
+
+    }
+    
+    func test_LoginApiResource_With_EmptyString_Returns_Error(){
+
+        // ARRANGE
+        let request = LoginRequest(userEmail: "", userPassword: "")
+        let resource = LoginApiResource()
+        let expectation = self.expectation(description: "EmptyString_Returns_Error")
+
+        // ACT
+        resource.authenticateUser(request: request) { (loginResponse) in
+
+            // ASSERT
+            XCTAssertNotNil(loginResponse)
+            XCTAssertNotNil(loginResponse?.errorMessage)
+            XCTAssertNil(loginResponse?.data)
+            XCTAssertEqual("Please make sure you pass a valid username and password", loginResponse?.errorMessage)
+
+            expectation.fulfill()
+        }
+
+        waitForExpectations(timeout: 5, handler: nil)
+
+    }
+    
+    func test_LoginApiResource_With_InvalidEmailFormat_Returns_Error(){
+
+        // ARRANGE
+        let request = LoginRequest(userEmail: "codecat15", userPassword: "1234")
+        let resource = LoginApiResource()
+        let expectation = self.expectation(description: "InvalidEmailFormat_Returns_Error")
+
+        // ACT
+        resource.authenticateUser(request: request) { (loginResponse) in
+
+            // ASSERT
+            XCTAssertNotNil(loginResponse)
+            XCTAssertNotNil(loginResponse?.errorMessage)
+            XCTAssertNil(loginResponse?.data)
+            XCTAssertEqual("Please enter a valid email id and try again", loginResponse?.errorMessage)
+
+            expectation.fulfill()
+        }
+
+        waitForExpectations(timeout: 5, handler: nil)
+
     }
 
 }

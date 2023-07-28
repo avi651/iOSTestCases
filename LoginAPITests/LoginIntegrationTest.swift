@@ -6,30 +6,93 @@
 //
 
 import XCTest
+@testable import LoginAPI
 
 final class LoginIntegrationTest: XCTestCase {
+    
+    func test_LoginHandler_WithValidRequest_Returns_LoginData(){
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
+        // ARRANGE
+        let request = LoginRequest(userEmail: "codecat15@gmail.com", userPassword: "1234")
+        let handler = LoginHandler()
+        let loginExpectations = expectation(description: "WithValidRequest_Returns_LoginData")
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+        // ACT
+        handler.authenticateUser(request: request) { (loginData) in
+            // ASSERT
+            XCTAssertNotNil(loginData)
+            XCTAssertNil(loginData?.errorMessage)
+            XCTAssertEqual(request.userEmail, loginData?.response?.data?.email)
+            XCTAssertEqual("codecat15", loginData?.response?.data?.userName)
+            XCTAssertEqual(15, loginData?.response?.data?.userID)
+            loginExpectations.fulfill()
         }
+
+        waitForExpectations(timeout: 5, handler: nil)
     }
 
+    func test_LoginHandler_WithInValidRequest_Returns_Error(){
+
+        // ARRANGE
+        let request = LoginRequest(userEmail: "test@test.com", userPassword: "1234")
+        let handler = LoginHandler()
+        let loginExpectations = expectation(description: "WithInValidRequest_Returns_Error")
+
+        // ACT
+        handler.authenticateUser(request: request) { (loginData) in
+            // ASSERT
+            XCTAssertNotNil(loginData)
+            XCTAssertNil(loginData?.errorMessage)
+            XCTAssertNotNil(loginData?.response?.errorMessage)
+            XCTAssertNil(loginData?.response?.data)
+            XCTAssertEqual("Invalid userEmail and password, please try again", loginData?.response?.errorMessage)
+
+            loginExpectations.fulfill()
+        }
+
+        waitForExpectations(timeout: 5, handler: nil)
+    }
+
+    func test_LoginHandler_WithEmptyString_Returns_Error(){
+
+        // ARRANGE
+        let request = LoginRequest(userEmail: "", userPassword: "")
+        let handler = LoginHandler()
+        let loginExpectations = expectation(description: "WithEmptyString_Returns_Error")
+
+        // ACT
+        handler.authenticateUser(request: request) { (loginData) in
+            // ASSERT
+            XCTAssertNotNil(loginData)
+            XCTAssertNotNil(loginData?.errorMessage)
+            XCTAssertNil(loginData?.response)
+            XCTAssertEqual("email or password cannot be empty", loginData?.errorMessage)
+
+            loginExpectations.fulfill()
+        }
+
+        waitForExpectations(timeout: 5, handler: nil)
+    }
+
+    func test_LoginHandler_WithInvalidEmailId_Returns_Error(){
+
+        // ARRANGE
+        let request = LoginRequest(userEmail: "helloWorld", userPassword: "1234")
+        let handler = LoginHandler()
+        let loginExpectations = expectation(description: "WithInvalidEmailId_Returns_Error")
+
+        // ACT
+        handler.authenticateUser(request: request) { (loginData) in
+            // ASSERT
+            XCTAssertNotNil(loginData)
+            XCTAssertNotNil(loginData?.errorMessage)
+            XCTAssertNil(loginData?.response)
+            XCTAssertEqual("email id is invalid", loginData?.errorMessage)
+
+            loginExpectations.fulfill()
+        }
+
+        waitForExpectations(timeout: 5, handler: nil)
+    }
+    
 }
